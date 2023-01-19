@@ -1,6 +1,9 @@
 import doctest
 _author_ = "Randy Hucker"
-_credits_ = ["Me", "https://en.wikipedia.org/wiki/Greedy_algorithm_for_Egyptian_fractions#:~:text=In%20mathematics%2C%20the%20greedy%20algorithm,%3D%2012%20%2B%2013. - Was used to understand the greedy algorithm and use the related expansions to get a base for the computations"]
+_credits_ = ["Me", 
+             "https://en.wikipedia.org/wiki/Greedy_algorithm_for_Egyptian_fractions#:~:text=In%20mathematics%2C%20the%20greedy%20algorithm,%3D%2012%20%2B%2013. - Was used to understand the greedy algorithm and use the related expansions to get a base for the computations", 
+             "Used the wikipedia page to develop a more efficient algo after developing my original"
+            ]
 _email_ = "huckerre@mail.uc.edu"  # Your email address
 
 
