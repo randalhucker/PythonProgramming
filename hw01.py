@@ -2,7 +2,7 @@ from fractions import Fraction
 import doctest
 import math
 _author_ = "Randy Hucker"
-_credits_ = ["Me"]
+_credits_ = ["Me", "https://en.wikipedia.org/wiki/Greedy_algorithm_for_Egyptian_fractions#:~:text=In%20mathematics%2C%20the%20greedy%20algorithm,%3D%2012%20%2B%2013. - Was used to understand the greedy algorithm and use the related expansions to get a base for the computations"]
 _email_ = "huckerre@mail.uc.edu"  # Your email address
 
 
@@ -17,25 +17,27 @@ def egypt(n, d):
     >>> egypt(103,104)
     '1/2 + 1/3 + 1/7 + 1/71 + 1/9122 + 1/141449381 + 1/100039636784966424 = 103/104'
     """
-    nO = n
-    dO = d
+    nO = n # A Placeholder for the original numerator
+    dO = d # A Placeholder for the original denominator
     denArray = []
-    while n != 0:
-        den = ((d-1)//n)+1
-        denArray.append(den)
-        n = (den * n) - d
-        d = (d * den)
+    while n != 0: # Builds solution array.
+        den = ((d-1)//n)+1 # Solution for the computation being to long for float, since "//" does int division to floor, need to add 1 for the floor adjustment
+        denArray.append(den) # add to array
+        n = (den * n) - d # move to next numerator value for algo
+        d = (d * den) # move to next demenator value
 
     print("'", end='')
 
     for i in range(len(denArray)):
         if i != len(denArray) - 1:
-            print(f"1/{abs(denArray[i])} +", end=" ")
+            print(f"1/{abs(denArray[i])} +", end=" ") # Solution for non conclusion print statements
         else:
-            print(f"1/{abs(denArray[i])}", end="")
+            print(f"1/{abs(denArray[i])}", end="") # Solution for adding correct end characters
 
     print(f" = {nO}/{dO}'", end='')
-
+    
+    # Old Algo Code before using wikipedia to find a more elegant algo.
+    
     # remainder = Fraction(n, d)
     # remainderCount = 2
     # if (remainder == 1):
