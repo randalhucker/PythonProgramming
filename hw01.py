@@ -6,13 +6,6 @@ _credits_ = ["Me"]
 _email_ = "huckerre@mail.uc.edu"  # Your email address
 
 
-def hcfnaive(a, b):
-    if (b == 0):
-        return abs(a)
-    else:
-        return hcfnaive(b, a % b)
-
-
 def egypt(n, d):
     """
     >>> egypt(3,4)
@@ -22,13 +15,13 @@ def egypt(n, d):
     >>> egypt(123,124)
     '1/2 + 1/3 + 1/7 + 1/64 + 1/8333 + 1/347186112 = 123/124'
     >>> egypt(103,104)
-    '1/2 + 1/3 + 1/7 + 1/71 + 1/9122 + 1/141449381 + 1/100039636784966424  = 103/104'
+    '1/2 + 1/3 + 1/7 + 1/71 + 1/9122 + 1/141449381 + 1/100039636784966424 = 103/104'
     """
     nO = n
     dO = d
     denArray = []
     while n != 0:
-        den = math.ceil(d//n)+1
+        den = ((d-1)//n)+1
         denArray.append(den)
         n = (den * n) - d
         d = (d * den)
@@ -75,3 +68,4 @@ def egypt(n, d):
 
 if __name__ == "__main__":
     doctest.testmod(verbose=True)
+
