@@ -88,8 +88,8 @@ def flatten(lst):
     for element in lst:
         if isinstance(element, list):
             returnArray.extend(element)
-        else:
-            returnArray.append(element)
+            continue
+        returnArray.append(element)
     if (any(isinstance(element, list) for element in returnArray)):
         returnArray = flatten(returnArray)
     return returnArray
