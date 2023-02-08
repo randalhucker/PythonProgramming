@@ -62,13 +62,9 @@ def replace_all(d, x, y):
     >>> d == {'foo': 2, 'bar': 'poof', 'garply': 'poof', 'xyzzy': 99}
     True
     """
-    replacement_dict = {}
     for key in d:
         if d[key] == x:
-            replacement_dict[key] = y
-        else:
-            replacement_dict[key] = d[key]
-    return replacement_dict
+            d[key] = y
 
 # RQ4
 
