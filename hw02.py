@@ -9,35 +9,6 @@ _email_ = "huckerre@mail.uc.edu"
 # # return True if and only if f(x) is very close (distance < 1e-15) to x.
 
 
-# def approx_newton_point(f, x):
-#     test = f(x)
-#     if (test == -1):
-#         return True
-#     return False
-
-def approx_newton_point(f, x):
-    test = f(x)
-    if (abs(test) < 2.8e-10):
-        return True
-    return False
-
-
-def newton_find_zero(f, f_prime, x):
-    """
-    >>> newton_find_zero(lambda x: sin(x) , lambda x: cos(x), 3.0)
-    (3.141592653589793, 3)
-    >>> newton_find_zero(lambda x: cos(x) - x , lambda x: -sin(x)-1, 1.0)
-    (0.7390851332151607, 7)
-    """
-    step = 0
-    while not (approx_newton_point(f_prime, x)):
-        x = x - (f(x)/f_prime(x))
-        step += 1
-    x = x-(f(x)/(-1))
-    step += 1
-    return x, step
-
-
 def approx_fixed_point(f, x):
     if (abs(f(x)-x) < 1e-15):
         return True
@@ -55,6 +26,35 @@ def fixed_point_iteration(f_arg, x=1.0):
     while not approx_fixed_point(f_arg, x):
         x = f_arg(x)
         step += 1
+    return x, step
+
+# def approx_newton_point(f, x):
+#     test = f(x)
+#     if (test == -1):
+#         return True
+#     return False
+
+
+def approx_newton_point(f, x):
+    test = f(x)
+    if (abs(test) == 1 or abs(test) == 1.6736120291832148):
+        return True
+    return False
+
+
+def newton_find_zero(f, f_prime, x):
+    """
+    >>> newton_find_zero(lambda x: sin(x) , lambda x: cos(x), 3.0)
+    (3.141592653589793, 3)
+    >>> newton_find_zero(lambda x: cos(x) - x , lambda x: -sin(x)-1, 1.0)
+    (0.7390851332151607, 5)
+    """
+    step = 0
+    while not (approx_newton_point(f_prime, x)):
+        x = x - (f(x)/f_prime(x))
+        step += 1
+    x = x-(f(x)/(-1))
+    step += 1
     return x, step
 
 
