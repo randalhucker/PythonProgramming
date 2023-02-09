@@ -1,9 +1,9 @@
 import doctest
 from math import sin, cos
 
-_author_ = "Randy Hucker"
-_credits_ = ["Me", "https://www.geeksforgeeks.org/any-all-in-python/"]
-_email_ = "huckerre@mail.uc.edu"
+_author_ = "Randy Hucker & Sam Graler"
+_credits_ = ["Us"]
+_email_ = "huckerre@mail.uc.edu, gralersm@mail.uc.edu"
 
 # # def approx_fixed_point(f, x) should
 # # return True if and only if f(x) is very close (distance < 1e-15) to x.

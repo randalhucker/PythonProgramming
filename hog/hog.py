@@ -6,6 +6,10 @@ from math import log2
 
 GOAL = 100  # The goal of Hog is to score 100 points.
 
+_author_ = "Randy Hucker & Sam Graler"
+_credits_ = ["Us"]
+_email_ = "huckerre@mail.uc.edu, gralersm@mail.uc.edu"
+
 ######################
 # Phase 1: Simulator #
 ######################
