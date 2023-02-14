@@ -30,14 +30,14 @@ def has_prefix(s, prefix):
     >>> has_prefix(link(2), link(2, link(3)))
     False
     """
+
     if prefix == 'empty':
         return True
     if len(s) > len(prefix):
         return False
     if first(s) == first(prefix):
         return has_prefix(rest(s), rest(prefix))
-    else:
-        return False
+    return False
 
 # RQ2
 
