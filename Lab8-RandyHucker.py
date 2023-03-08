@@ -1,6 +1,13 @@
 ## Lab 8: Trees ##
 
+import doctest
+_author_ = "Randy Hucker"
+_credits_ = ["Me"]
+_email_ = "huckerre@mail.uc.edu"
+
 # pyTunes
+
+
 def make_pytunes(username):
     """Return a pyTunes tree as shown in the diagram with USERNAME as the value
     of the root.
@@ -47,7 +54,13 @@ def add_song(t, song, category):
           georgia
 
     """
-    "*** YOUR CODE HERE ***"
+    if t[0] == category:
+        return tree(t[0], (branches(t) + [tree(song)]))
+    
+    a_branches = []
+    for branch in branches(t):
+        a_branches += [add_song(branch, song, category)]
+    return tree(root(t), a_branches)
 
 # Tree ADT
 
@@ -135,4 +148,12 @@ def delete(t, target):
         gangnam style
         wedding dress
     """
-    "*** YOUR CODE HERE ***"
+    a_branches = []
+    for branch in branches(t):
+        if branch[0] != target:
+            a_branches += [delete(branch, target)]
+    return tree(root(t), a_branches)
+
+
+if __name__ == '__main__':
+    doctest.testmod(verbose=True)
