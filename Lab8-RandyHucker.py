@@ -24,7 +24,7 @@ def make_pytunes(username):
         darude
           sandstorm
     """
-    "*** YOUR CODE HERE ***"
+    return (tree(username, [tree('pop', [tree('justin bieber', [tree('single', [tree('what do you mean?')])]), tree('2015 pop mashup')]), tree('trance', [tree('darude', [tree('sandstorm')])])]))
 
 
 def num_songs(t):
@@ -34,7 +34,11 @@ def num_songs(t):
     >>> num_songs(pytunes)
     3
     """
-    "*** YOUR CODE HERE ***"
+    if (is_leaf(t)):
+        return 1
+    else:
+        for b in branches(t):
+            return (1 + num_songs(branches(b)))
 
 
 def add_song(t, song, category):
@@ -56,7 +60,7 @@ def add_song(t, song, category):
     """
     if t[0] == category:
         return tree(t[0], (branches(t) + [tree(song)]))
-    
+
     a_branches = []
     for branch in branches(t):
         a_branches += [add_song(branch, song, category)]
