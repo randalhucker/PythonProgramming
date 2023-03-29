@@ -1,5 +1,11 @@
 ## Lab 9: Machine Learning ##
 
+import pickle
+import numpy as np
+import pandas as pd
+from sklearn.metrics import classification_report, confusion_matrix, accuracy_score
+from sklearn.model_selection import train_test_split
+from sklearn.ensemble import RandomForestClassifier
 import doctest
 _author_ = "Randy Hucker"
 _credits_ = ["Me"]
@@ -9,7 +15,7 @@ _email_ = "huckerre@mail.uc.edu"
 
 # Estimators   Accuracy
 # 1             86.89%
-# 2             80.33%  
+# 2             80.33%
 # 3             75.41%
 # 4             86.89%
 # 5             81.97%
@@ -24,12 +30,6 @@ _email_ = "huckerre@mail.uc.edu"
 # would actually improve the accuracy.
 
 
-from sklearn.ensemble import RandomForestClassifier
-from sklearn.model_selection import train_test_split
-from sklearn.metrics import classification_report, confusion_matrix, accuracy_score
-import pandas as pd
-import numpy as np
-import pickle
 # Modify this to your file system
 heart_disease = pd.read_csv('C:/Users/randa/Downloads/heart.csv')
 
@@ -60,10 +60,11 @@ np.random.seed(42)
 for i in range(1, 11, 1):
     print(f"Trying model with {i} estimators...")
     clf = RandomForestClassifier(n_estimators=i).fit(X_train, Y_train)
-    print(f"Model accuracy on test set: {clf.score(X_test, Y_test) * 100:.2f}%")
+    print(
+        f"Model accuracy on test set: {clf.score(X_test, Y_test) * 100:.2f}%")
     print("")
 
 pickle.dump(clf, open("Random_Forst_Model_1.pkl", "wb"))
 
 loaded_model = pickle.load(open("Random_Forst_Model_1.pkl", "rb"))
-print(loaded_model.score(X_test, Y_test)) 
+print(loaded_model.score(X_test, Y_test))
