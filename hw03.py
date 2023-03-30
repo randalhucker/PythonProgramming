@@ -32,6 +32,19 @@ else:  # FOR LINUX USERS
     words = wordfile.read().upper().split()
 
 
+def sort_words():
+    longestWordLength = len(max(words, key=len))
+    sorted_array = []
+    for x in range(1, longestWordLength+1):
+        result = [textword for textword in words if len(textword) == x]
+        sorted_array.append(sorted(result))
+    return sorted_array
+
+
+sorted_array = sort_words()
+longest_ladder_dict = {}
+
+
 def all_steps(w):
     one_step_words = []
     for word in words:
@@ -45,12 +58,27 @@ def all_steps(w):
                     break
             if (len(temp_word) == 1):
                 one_step_words.append(word)
-    print(one_step_words)
+    return one_step_words
+
+
+def longest_ladder(numletters):
+    for word in sorted_array[numletters-1]:
+        for target in sorted_array[numletters]:
+            if target in all_steps(word):
+                # Make Connection
+                try:
+                    longest_ladder_dict[target] = 1 + longest_ladder_dict[word]
+                except:
+                    longest_ladder_dict[target] = 1
+                print(longest_ladder_dict)
+    longest_ladder(numletters-1)
 
 
 if __name__ == "__main__":
     step_continue = "y"
     while (step_continue == "y"):
         word = input("Please enter your word: ")
-        all_steps(word.upper())
+        print(all_steps(word.upper()))
+        #longest_ladder(27)
+        #print(longest_ladder_dict)
         step_continue = input("Enter 'y' to continue: ")
