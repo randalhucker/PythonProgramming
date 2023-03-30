@@ -47,17 +47,16 @@ longest_ladder_dict = {}
 
 def all_steps(w):
     one_step_words = []
-    for word in words:
-        if (len(w) + 1 == len(word)):
-            # check letters
-            temp_word = word
-            for i in range(len(w)):
-                if w[i] in temp_word:
-                    temp_word = temp_word.replace(w[i], '', 1)
-                else:
-                    break
-            if (len(temp_word) == 1):
-                one_step_words.append(word)
+    for word in sorted_array[len(w)]:
+        # check letters
+        temp_word = word
+        for i in range(len(w)):
+            if w[i] in temp_word:
+                temp_word = temp_word.replace(w[i], '', 1)
+            else:
+                break
+        if (len(temp_word) == 1):
+            one_step_words.append(word)
     return one_step_words
 
 
@@ -79,6 +78,6 @@ if __name__ == "__main__":
     while (step_continue == "y"):
         word = input("Please enter your word: ")
         print(all_steps(word.upper()))
-        #longest_ladder(27)
-        #print(longest_ladder_dict)
+        # longest_ladder(27)
+        # print(longest_ladder_dict)
         step_continue = input("Enter 'y' to continue: ")
