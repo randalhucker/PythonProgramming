@@ -2,7 +2,7 @@ import matplotlib.pyplot as plt
 import pandas as pd
 import numpy as np
 from pandas import DataFrame, Series
-sh_raw = pd.read_csv('D:/Github/PythonProgramming-Spring-23/Lab10-RandyHucker/dataset.csv',
+sh_raw = pd.read_csv('dataset.csv',
                      header=None,
                      names=['Year', 'Title', 'Comic', 'IMDB', 'RT', '', 'OpeningWeekendBoxOffice', 'AvgTicketPriceThatYear', 'EstdOpeningAttendance', 'USPopThatYear'])
 
@@ -29,23 +29,22 @@ sh = sh_raw[np.isfinite(
 
 def DCSeries(Dataframe):
     DCComics = pd.DataFrame(Dataframe)
-    print(DCComics[DCComics.Comic == 'DC'])
+    print(DCComics[DCComics["Comic"] == "DC"])
 
 # Required Lab Question 2:
 
 
 def PrintTwoColumnsDC(Dataframe):
     DCComics = pd.DataFrame(Dataframe)
-    print(DCComics.Year[DCComics.Comic == 'DC'])
-    print(DCComics.Title[DCComics.Comic == 'DC'])
+    print(DCComics[DCComics["Comic"] == "DC"][list({"Year", "Title"})])
 
 # Required Lab Question 3:
 
 
 def PrintTwoColumnsMarvel(Dataframe):
-    DCComics = pd.DataFrame(Dataframe)
-    print(DCComics.Year[DCComics.Comic == 'Marvel'])
-    print(DCComics.Title[DCComics.Comic == 'Marvel'])
+    MarvelComics = pd.DataFrame(Dataframe)
+    print(MarvelComics[MarvelComics["Comic"] == "Marvel"]
+          [list({"Year", "Title"})])
 
 # Required Lab Question 4:
 
@@ -53,7 +52,7 @@ def PrintTwoColumnsMarvel(Dataframe):
 def ScatterPlot():
     sh.insert(10, 'AVGPrice', sh.AvgTicketPriceThatYear)
     sh.insert(11, 'Year(Price)', sh.Year)
-    sh.plot.scatter(x='Year(Price)', y='AVGPrice')
+    sh.plot.scatter(x='Year', y='AVGPrice')
     plt.show()
 
 # Required Lab Question 5:
@@ -61,8 +60,7 @@ def ScatterPlot():
 
 def PrintCorrelation():
     sh.insert(10, 'AVGPrice', sh.AvgTicketPriceThatYear)
-    sh.insert(11, 'Year(Price)', sh.Year)
-    print(sh[['Year(Price)', 'AVGPrice']].corr())
+    print(sh[['Year', 'AVGPrice']].corr())
 
 # Required Lab Question 6:
 
