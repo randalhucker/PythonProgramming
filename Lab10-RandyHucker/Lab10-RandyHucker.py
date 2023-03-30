@@ -51,7 +51,6 @@ def PrintTwoColumnsMarvel(Dataframe):
 
 def ScatterPlot():
     sh.insert(10, 'AVGPrice', sh.AvgTicketPriceThatYear)
-    sh.insert(11, 'Year(Price)', sh.Year)
     sh.plot.scatter(x='Year', y='AVGPrice')
     plt.show()
 
