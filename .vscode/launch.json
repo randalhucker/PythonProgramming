@@ -14,8 +14,8 @@
       "type": "lldb",
       "request": "launch",
       "args": [],
-      "cwd": "/Users/randyhucker/Documents/GitHub/PythonProgramming-Spring-23/hw03",
-      "program": "/Users/randyhucker/Documents/GitHub/PythonProgramming-Spring-23/hw03/build/Debug/outDebug"
+      "cwd": "/Users/randyhucker/Documents/GitHub/PythonProgramming-Spring-23",
+      "program": "/Users/randyhucker/Documents/GitHub/PythonProgramming-Spring-23/build/Debug/outDebug"
     }
   ]
 }

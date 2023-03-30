@@ -21,7 +21,7 @@ from sys import platform
 
 # if on Linux OS, use built in dictionary (contains more words) (we coded using a Linux OS)
 
-if (platform == 'Windows'):  # FOR NON-LINUX USERS
+if (platform == 'win32'):  # FOR NON-LINUX USERS
     url = "http://raw.githubusercontent.com/eneko/data-repository/master/data/words.txt"
     import os
     from urllib.request import urlopen
