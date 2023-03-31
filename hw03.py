@@ -64,18 +64,19 @@ def longest_ladder(numletters):
     for word in sorted_array[numletters-1]:
         all_steps_result = all_steps(word)
         updated = False
-        for target in sorted_array[numletters]:
-            if target in all_steps_result:
-                # Make Connection
-                try:
-                    set_val = 1 + longest_ladder_dict[target][0]
-                    val_array = longest_ladder_dict[target][1]
-                    val_array.append(word)
-                    longest_ladder_dict[word] = [set_val, val_array]
-                    updated = True
-                except:
-                    longest_ladder_dict[word] = [1, [word]]
-                    updated = True
+        # for target in sorted_array[numletters]:
+        for target in all_steps_result:
+           # if target in all_steps_result:
+            # Make Connection
+            try:
+                set_val = 1 + longest_ladder_dict[target][0]
+                val_array = longest_ladder_dict[target][1]
+                val_array.append(word)
+                longest_ladder_dict[word] = [set_val, val_array]
+                updated = True
+            except:
+                longest_ladder_dict[word] = [2, [target, word]]
+                updated = True
             # try:
             #     if (updated == False and longest_ladder_dict[target]):
             #         longest_ladder_dict.pop(target)
@@ -84,7 +85,10 @@ def longest_ladder(numletters):
     print("----------------")
     print(longest_ladder_dict)
     print("----------------")
-    longest_ladder(numletters-1)
+    if (numletters == 0):
+        return
+    else:
+        longest_ladder(numletters-1)
 
 
 if __name__ == "__main__":
@@ -93,5 +97,12 @@ if __name__ == "__main__":
         # word = input("Please enter your word: ")
         # print(all_steps(word.upper()))
         longest_ladder(27)
-        # print(longest_ladder_dict)
+        max_value = max(longest_ladder_dict,
+                        key=lambda key: longest_ladder_dict[key])
+        print(
+            f"The Longest Word Ladder is {longest_ladder_dict[max_value][0]} words long.")
+        print(
+            f"The word {longest_ladder_dict[max_value][1][-1]} builds the ladder:")
+        print(longest_ladder_dict[max_value][1][::-1])
+
         step_continue = input("Enter 'y' to continue: ")
