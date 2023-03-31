@@ -62,22 +62,36 @@ def all_steps(w):
 
 def longest_ladder(numletters):
     for word in sorted_array[numletters-1]:
+        all_steps_result = all_steps(word)
+        updated = False
         for target in sorted_array[numletters]:
-            if target in all_steps(word):
+            if target in all_steps_result:
                 # Make Connection
                 try:
-                    longest_ladder_dict[target] = 1 + longest_ladder_dict[word]
+                    set_val = 1 + longest_ladder_dict[target][0]
+                    val_array = longest_ladder_dict[target][1]
+                    val_array.append(word)
+                    longest_ladder_dict[word] = [set_val, val_array]
+                    updated = True
                 except:
-                    longest_ladder_dict[target] = 1
-                print(longest_ladder_dict)
+                    longest_ladder_dict[word] = [1, [word]]
+                    updated = True
+            # try:
+            #     if (updated == False and longest_ladder_dict[target]):
+            #         longest_ladder_dict.pop(target)
+            # except:
+            #     continue
+    print("----------------")
+    print(longest_ladder_dict)
+    print("----------------")
     longest_ladder(numletters-1)
 
 
 if __name__ == "__main__":
     step_continue = "y"
     while (step_continue == "y"):
-        word = input("Please enter your word: ")
-        print(all_steps(word.upper()))
-        # longest_ladder(27)
+        # word = input("Please enter your word: ")
+        # print(all_steps(word.upper()))
+        longest_ladder(27)
         # print(longest_ladder_dict)
         step_continue = input("Enter 'y' to continue: ")
