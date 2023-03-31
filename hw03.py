@@ -94,20 +94,23 @@ def longest_ladder(numletters):
 if __name__ == "__main__":
     step_continue = "y"
     while (step_continue == "y"):
-        # word = input("Please enter your word: ")
-        # print(all_steps(word.upper()))
-        longest_ladder(5)
+        input_choice = input("Please enter 1 for word, 2 for longest ladder: ")
+        if (input_choice == "1"):
+            word = input("Please enter your word: ")
+            print(all_steps(word.upper()))
+        elif (input_choice == "2"):
+            longest_ladder(27)
 
-        max_value = max(longest_ladder_dict,
-                        key=lambda key: longest_ladder_dict[key])
-        print(
-            f"The Longest Word Ladder is {longest_ladder_dict[max_value][0]} words long.")
-        print(
-            f"The word {longest_ladder_dict[max_value][1][-1]} builds the ladder:")
-        wordlen = 0
-        for word in longest_ladder_dict[max_value][1][::-1]:
-            if len(word) > wordlen:
-                wordlen = len(word)
-                print(word)
+            max_value = max(longest_ladder_dict,
+                            key=lambda key: longest_ladder_dict[key])
+            print(
+                f"The Longest Word Ladder is {longest_ladder_dict[max_value][0]} words long.")
+            print(
+                f"The word {longest_ladder_dict[max_value][1][-1]} builds the ladder:")
+            wordlen = 0
+            for word in longest_ladder_dict[max_value][1][::-1]:
+                if len(word) > wordlen:
+                    wordlen = len(word)
+                    print(word)
 
         step_continue = input("Enter 'y' to continue: ")
