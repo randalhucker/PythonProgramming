@@ -66,5 +66,5 @@ for i in range(1, 11, 1):
 
 pickle.dump(clf, open("Random_Forst_Model_1.pkl", "wb"))
 
-loaded_model = pickle.load(open("Random_Forst_Model_1.pkl", "rb"))
+loaded_model = pickle.load(open("Random_Forest_Model_1.pkl", "rb"))
 print(loaded_model.score(X_test, Y_test))
