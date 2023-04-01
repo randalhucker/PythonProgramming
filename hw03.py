@@ -108,7 +108,8 @@ if __name__ == "__main__":
             print(
                 f"The word {longest_ladder_dict[max_value][1][-1]} builds the ladder:")
             wordlen = 0
-            for word in longest_ladder_dict[max_value][1][::-1]:
+            output_array = longest_ladder_dict[max_value][1][::-1]
+            for word in output_array:
                 if len(word) > wordlen:
                     wordlen = len(word)
                     print(word)
