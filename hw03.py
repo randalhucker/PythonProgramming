@@ -31,9 +31,10 @@ else:  # FOR LINUX USERS
     wordfile = open("/usr/share/dict/words")
     words = wordfile.read().upper().split()
 
+longestWordLength = len(max(words, key=len))
+
 
 def sort_words():
-    longestWordLength = len(max(words, key=len))
     sorted_array = []
     for x in range(1, longestWordLength+1):
         result = [textword for textword in words if len(textword) == x]
@@ -69,10 +70,13 @@ def longest_ladder(numletters):
            # if target in all_steps_result:
             # Make Connection
             try:
-                set_val = 1 + longest_ladder_dict[target][0]
-                val_array = longest_ladder_dict[target][1]
+                test_var = longest_ladder_dict[target]
+                set_val = 1 + test_var[0]
+                #val_array = test_var[1]
+                val_array = copy.deepcopy(test_var[1])
                 val_array.append(word)
                 longest_ladder_dict[word] = [set_val, val_array]
+                test_var2 = longest_ladder_dict[word]
                 updated = True
             except:
                 longest_ladder_dict[word] = [2, [target, word]]
@@ -99,7 +103,8 @@ if __name__ == "__main__":
             word = input("Please enter your word: ")
             print(all_steps(word.upper()))
         elif (input_choice == "2"):
-            longest_ladder(27)
+            import copy
+            longest_ladder(longestWordLength-1)
 
             max_value = max(longest_ladder_dict,
                             key=lambda key: longest_ladder_dict[key])
