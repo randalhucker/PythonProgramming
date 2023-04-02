@@ -70,13 +70,11 @@ def longest_ladder(numletters):
            # if target in all_steps_result:
             # Make Connection
             try:
-                test_var = longest_ladder_dict[target]
-                set_val = 1 + test_var[0]
-                #val_array = test_var[1]
-                val_array = copy.deepcopy(test_var[1])
+                tar_var = longest_ladder_dict[target]
+                set_val = 1 + tar_var[0]
+                val_array = copy.deepcopy(tar_var[1])
                 val_array.append(word)
                 longest_ladder_dict[word] = [set_val, val_array]
-                test_var2 = longest_ladder_dict[word]
                 updated = True
             except:
                 longest_ladder_dict[word] = [2, [target, word]]
