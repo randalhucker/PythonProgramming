@@ -32,7 +32,8 @@ print(f"MSE Score: {metrics.mean_squared_error(expected, predicted)} \n")
 
 e = enumerate(cali.feature_names)
 for i, name in e:
-    X_train, X_test, Y_train, Y_test = train_test_split(cali_df.iloc[:,i].value.reshape(-1,1), cali.target, random_state=11)
+    X_train, X_test, Y_train, Y_test = train_test_split(
+        cali_df.iloc[:, i].value.reshape(-1, 1), cali.target, random_state=11)
     regress.fit(X=X_train, y=Y_train)
     predicted = regress.predict(X_test)
     expected = Y_test
