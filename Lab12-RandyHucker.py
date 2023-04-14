@@ -1,8 +1,8 @@
-## Lab 8: Trees ##
+## Lab 12: Generators and Iterators ##
 
 import doctest
 _author_ = "Randy Hucker"
-_credits_ = ["Me"]
+_credits_ = ["Me, myself, and I, and Ch 11 of PYTHON PROGRAMMING"]
 _email_ = "huckerre@mail.uc.edu"
 
 # RQ1
@@ -61,25 +61,41 @@ class Countdown:
     0
     """
 
-    "*** YOUR CODE HERE ***"
+    def __init__(self, n):
+        self.n = n
+        self.index = 0
 
+    def __iter__(self):
+        return self
+
+    def __next__(self):
+        if self.index >= self.n+1:
+            raise StopIteration
+        else:
+            self.index += 1
+            return self.n - self.index + 1
 
 ##############
 # Generators #
 ##############
 
 # RQ3
+
+
 def evens():
     """A generator function that yields the infinite sequence of all even natural
     numbers, starting at 1.
 
     >>> m = evens()
     >>> type(m)
-
+    <class 'generator'>
     >>> [next(m) for _ in range(5)]
     [2, 4, 6, 8, 10]
     """
-    "*** YOUR CODE HERE ***"
+    x = 0
+    while True:
+        x += 2
+        yield x
 
 # RQ4
 
@@ -89,7 +105,7 @@ def scale(s, k):
 
     >>> s = scale([1, 5, 2], 5)
     >>> type(s)
-
+    <class 'generator'>
     >>> list(s)
     [5, 25, 10]
 
@@ -97,7 +113,8 @@ def scale(s, k):
     >>> [next(m) for _ in range(5)]
     [2, 4, 6, 8, 10]
     """
-    "*** YOUR CODE HERE ***"
+    for i in s:
+        yield i * k
 
 # RQ5
 
@@ -121,7 +138,8 @@ def countdown(n):
     1
     0
     """
-    "*** YOUR CODE HERE ***"
+    for i in range(n, -1, -1):
+        yield i
 
 
 # RQ6
@@ -138,4 +156,21 @@ def hailstone(n):
     2
     1
     """
-    "*** YOUR CODE HERE ** *
+    while n > 1:
+        yield n
+        if n % 2 == 0:
+            n = n // 2
+        else:
+            n = 3 * n + 1
+    yield n
+
+
+def naturals():
+    i = 1
+    while True:
+        yield i
+        i += 1
+
+
+if __name__ == '__main__':
+    doctest.testmod(verbose=True)
