@@ -1,5 +1,6 @@
 import matplotlib.pyplot as plt
 from random import random, seed
+import scipy
 
 # SEEDING THE RANDOM-NUMBER GENERATOR FOR REPRODUCIBILITY
 # seed(43)
@@ -34,6 +35,7 @@ from random import random, seed
 
 # MONTE CARLO INTEGRATION
 # import numpy as np
+# rng = np.random.default_rng()
 # # limits of integration are a, b
 # a = 0
 # b = np.pi # gets the value of pi
@@ -42,7 +44,7 @@ from random import random, seed
 # def f(x):
 #     return np.sin(x)
 # for i in range (N):
-#     x = a + (b-a)*random()
+#     x = a + (b-a)*rng()
 #     integral += f(x)
 # ans = (b-a) * integral/N
 # print (f"{ans} is the estimated value.")
@@ -60,4 +62,21 @@ from random import random, seed
 # plt.plot(balls, maxbin)
 # plt.show()
 
-print("Done")
+# MODULE 13 LAB
+import numpy as np
+balls = np.arange(1, 1000)
+emptybin = []
+for N in balls:
+    bins = np.zeros(N)
+    emptybins = 0
+    for b in range(N):
+        bins[int(N * random())] += 1
+    emptybin.append(len(bins) - len(np.nonzero(bins)[0]))
+plt.plot(balls, emptybin)
+plt.show()
+
+result = scipy.stats.linregress(x=balls, y=emptybin, alternative='greater')
+print(f"Slope: {result.slope:.6f}")
+print(f"Intercept: {result.intercept:.6f}")
+print(f"R-value: {result.rvalue:.6f}")
+print(f"R-squared: {result.rvalue**2:.6f}")
