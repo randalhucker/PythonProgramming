@@ -3,6 +3,26 @@ from random import random
 import numpy as np
 import scipy as sp
 
+# MODULE 13 LAB
+if __name__ == "__main__":
+    balls = np.arange(1, 1000)
+    emptybin = []
+    for N in balls:
+        bins = np.zeros(N)
+        emptybins = 0
+        for b in range(N):
+            bins[int(N * random())] += 1
+        emptybin.append(len(bins) - len(np.nonzero(bins)[0]))
+    plt.plot(balls, emptybin)
+    plt.show()
+
+    result = sp.stats.linregress(x=balls, y=emptybin, alternative='greater')
+    print(f"Slope: {result.slope:.6f}")
+    print(f"Intercept: {result.intercept:.6f}")
+    print(f"R-value: {result.rvalue:.6f}")
+    print(f"R-squared: {result.rvalue**2:.6f}")
+
+
 # SEEDING THE RANDOM-NUMBER GENERATOR FOR REPRODUCIBILITY
 # from random import seed
 # seed(43)
@@ -63,21 +83,3 @@ import scipy as sp
 #     maxbin.append(max(bins))
 # plt.plot(balls, maxbin)
 # plt.show()
-
-# MODULE 13 LAB
-balls = np.arange(1, 1000)
-emptybin = []
-for N in balls:
-    bins = np.zeros(N)
-    emptybins = 0
-    for b in range(N):
-        bins[int(N * random())] += 1
-    emptybin.append(len(bins) - len(np.nonzero(bins)[0]))
-plt.plot(balls, emptybin)
-plt.show()
-
-result = sp.stats.linregress(x=balls, y=emptybin, alternative='greater')
-print(f"Slope: {result.slope:.6f}")
-print(f"Intercept: {result.intercept:.6f}")
-print(f"R-value: {result.rvalue:.6f}")
-print(f"R-squared: {result.rvalue**2:.6f}")
