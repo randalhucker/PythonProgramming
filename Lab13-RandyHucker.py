@@ -1,7 +1,13 @@
-import matplotlib.pyplot as plt
-from random import random
-import numpy as np
+## Lab 13: Monte Carlo ##
+
 import scipy as sp
+import numpy as np
+from random import random
+import matplotlib.pyplot as plt
+_author_ = "Randy Hucker"
+_credits_ = ["Me, myself, and I, and Ch 11 of PYTHON PROGRAMMING"]
+_email_ = "huckerre@mail.uc.edu"
+
 
 # MODULE 13 LAB
 if __name__ == "__main__":
