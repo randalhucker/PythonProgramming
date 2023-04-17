@@ -1,8 +1,10 @@
 import matplotlib.pyplot as plt
-from random import random, seed
-import scipy
+from random import random
+import numpy as np
+import scipy as sp
 
 # SEEDING THE RANDOM-NUMBER GENERATOR FOR REPRODUCIBILITY
+# from random import seed
 # seed(43)
 # for roll in range(20):
 #     print(1 + int(random()*6), end=' ')
@@ -63,7 +65,6 @@ import scipy
 # plt.show()
 
 # MODULE 13 LAB
-import numpy as np
 balls = np.arange(1, 1000)
 emptybin = []
 for N in balls:
@@ -75,7 +76,7 @@ for N in balls:
 plt.plot(balls, emptybin)
 plt.show()
 
-result = scipy.stats.linregress(x=balls, y=emptybin, alternative='greater')
+result = sp.stats.linregress(x=balls, y=emptybin, alternative='greater')
 print(f"Slope: {result.slope:.6f}")
 print(f"Intercept: {result.intercept:.6f}")
 print(f"R-value: {result.rvalue:.6f}")
